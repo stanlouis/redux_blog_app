@@ -8,6 +8,7 @@ export default function(state = {}, action) {
       return _.mapKeys(action.payload.data, 'id');
       break;
     default:
+      return state;
       break;
   }
 }

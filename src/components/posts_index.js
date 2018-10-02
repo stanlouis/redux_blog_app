@@ -8,7 +8,6 @@ class PostsIndex extends Component {
   };
 
   renderPosts = () => {
-    console.log(Object.values(this.props.posts))
     return Object.values(this.props.posts).map(post => (
       <li className="list-group-item" key={post.id}>
         {post.title}

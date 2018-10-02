@@ -12,7 +12,12 @@ import registerServiceWorker from './registerServiceWorker';
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider
+    store={createStoreWithMiddleware(
+      reducers,
+      window.devToolsExtension && window.devToolsExtension()
+    )}
+  >
     <BrowserRouter>
       <div>
         <Route exact path="/" component={PostsIndex} />

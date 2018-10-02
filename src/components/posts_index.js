@@ -8,6 +8,7 @@ class PostsIndex extends Component {
   };
 
   renderPosts = () => {
+    console.log(Object.values(this.props.posts))
     return Object.values(this.props.posts).map(post => (
       <li className="list-group-item" key={post.id}>
         {post.title}
@@ -25,6 +26,7 @@ class PostsIndex extends Component {
 }
 
 const mapStateToProps = state => ({ posts: state.posts });
+
 export default connect(
   mapStateToProps,
   { fetchPosts }

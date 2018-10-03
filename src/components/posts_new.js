@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 class PostsNew extends Component {
   renderField(field) {
     const { touched, error } = field.meta;
-    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+    const className = `form-control ${touched && error ? 'is-invalid' : ''}`;
     return (
-      <div className={className}>
+      <div className="form-group">
         <label>{field.label}</label>
-        <input className="form-control" type="text" {...field.input} />
+        <input className={className} type="text" {...field.input} />
         <div className="text-danger">{touched ? error : ''}</div>
       </div>
     );
   }
 
   onSubmit(values) {
-    console.log(values);
+    
+    this.props.createPost(values, () => this.props.history.push('/'));
   }
 
   render() {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field label="Title" name="title" component={this.renderField} />
+        <Field
+          label="Title For Post"
+          name="title"
+          component={this.renderField}
+        />
         <Field
           label="Categories"
           name="categories"
@@ -36,6 +44,9 @@ class PostsNew extends Component {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+        <Link className="btn btn-danger mx-1" to="/">
+          Cancel
+        </Link>
       </form>
     );
   }
@@ -43,7 +54,7 @@ class PostsNew extends Component {
 
 function validate(values) {
   const errors = {};
-  //validate the inputs from 'values
+  //validate the inputs from values
   if (!values.title || values.title.length < 3) {
     errors.title = 'Enter a title that is at least 3 characters!';
   }
@@ -60,4 +71,9 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
-})(PostsNew);
+})(
+  connect(
+    null,
+    { createPost }
+  )(PostsNew)
+);

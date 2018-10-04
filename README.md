@@ -1,6 +1,6 @@
 # ReactRedux blog app
 
-Udemy course [Modern React with Redux](https://www.udemy.com/react-redux/)?
+Udemy course [Modern React with Redux](https://www.udemy.com/react-redux/)
 
 ### Getting Started
 

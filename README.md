@@ -1,12 +1,12 @@
-# ReactReduxSimpleStarter With create-react-app
+# ReactRedux blog app
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+Udemy course [Redux](https://www.udemy.com/react-redux/)?
 
 ### Getting Started
 
 ```
-> git clone https://github.com/stanlouis/stanReduxSimpleStarter.git
-> cd stanReduxSimpleStarter
+> git clone https://github.com/stanlouis/redux_blog_app.git
+> cd redux_blog_app
 > yarn install
 > yarn start
 ```
